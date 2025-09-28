@@ -1,0 +1,101 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Lab 6: Pythonic Utilities\n",
+    "\n",
+    "In this lab, you'll practice Python's built-in utilities like `enumerate()`, `zip()`, `lambda`, and comprehensions.\n",
+    "\n",
+    "### Tasks\n",
+    "1. Use `enumerate()` to loop through a list of favorite foods and print them with numbers.\n",
+    "2. Use `zip()` to combine two lists: names and grades. Print each pair.\n",
+    "3. Write a list of numbers and use a `lambda` function to sort it in descending order.\n",
+    "4. Write a comprehension that squares all even numbers from 1–10.\n",
+    "\n",
+    "### Challenge\n",
+    "Write a **mini report generator**:\n",
+    "- Have two lists: `students = [\"Alex\", \"Jordan\", \"Taylor\"]` and `grades = [90, 85, 78]`.\n",
+    "- Use `zip()` to combine them into a dictionary.\n",
+    "- Print out `\"Student: Grade\"` for each one."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Task 1: enumerate()\n",
+    "foods = [\"Pizza\", \"Burger\", \"Sushi\", \"Tacos\"]\n",
+    "for i, food in enumerate(foods, start=1):\n",
+    "    print(i, food)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Task 2: zip()\n",
+    "names = [\"Alex\", \"Jordan\", \"Taylor\"]\n",
+    "grades = [90, 85, 78]\n",
+    "for name, grade in zip(names, grades):\n",
+    "    print(name, grade)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Task 3: lambda for sorting\n",
+    "numbers = [5, 2, 9, 1, 7]\n",
+    "sorted_numbers = sorted(numbers, key=lambda x: x, reverse=True)\n",
+    "print(sorted_numbers)  # Expected: [9, 7, 5, 2, 1]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Task 4: comprehension for squares of even numbers\n",
+    "squares = [x**2 for x in range(1, 11) if x % 2 == 0]\n",
+    "print(squares)  # Expected: [4, 16, 36, 64, 100]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Challenge: Mini report generator\n",
+    "students = [\"Alex\", \"Jordan\", \"Taylor\"]\n",
+    "grades = [90, 85, 78]\n",
+    "\n",
+    "report = dict(zip(students, grades))\n",
+    "for student, grade in report.items():\n",
+    "    print(f\"{student}: {grade}\")"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.11"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
