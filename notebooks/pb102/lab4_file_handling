@@ -1,0 +1,123 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Lab 4: File Handling (CSV & JSON)\n",
+    "\n",
+    "In this lab, you'll practice reading and writing structured files.\n",
+    "\n",
+    "### Tasks\n",
+    "1. Write a program that saves a list of names and grades to a CSV file.\n",
+    "2. Write another program that reads the CSV file and prints out each name and grade.\n",
+    "3. Save the same data as a JSON file.\n",
+    "4. Read the JSON file back and print it.\n",
+    "\n",
+    "### Challenge\n",
+    "Build an **expense tracker**:\n",
+    "- Let the user enter an expense name and amount.\n",
+    "- Save entries to a CSV file.\n",
+    "- At the end, read the file and show the total spent."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Task 1: Save list of names and grades to CSV\n",
+    "import csv\n",
+    "\n",
+    "students = [(\"Alex\", 90), (\"Jordan\", 85), (\"Taylor\", 78)]\n",
+    "\n",
+    "with open(\"grades.csv\", \"w\", newline=\"\") as f:\n",
+    "    writer = csv.writer(f)\n",
+    "    writer.writerow([\"Name\", \"Grade\"])\n",
+    "    writer.writerows(students)\n",
+    "\n",
+    "print(\"grades.csv written.\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Task 2: Read CSV file\n",
+    "with open(\"grades.csv\", \"r\") as f:\n",
+    "    reader = csv.reader(f)\n",
+    "    for row in reader:\n",
+    "        print(row)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Task 3: Save as JSON\n",
+    "import json\n",
+    "\n",
+    "data = [{\"name\": n, \"grade\": g} for n, g in students]\n",
+    "\n",
+    "with open(\"grades.json\", \"w\") as f:\n",
+    "    json.dump(data, f)\n",
+    "\n",
+    "print(\"grades.json written.\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Task 4: Read JSON\n",
+    "with open(\"grades.json\", \"r\") as f:\n",
+    "    data = json.load(f)\n",
+    "    print(data)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Challenge: Expense tracker\n",
+    "expenses = []\n",
+    "while True:\n",
+    "    name = input(\"Enter expense name (or 'done'): \")\n",
+    "    if name == \"done\":\n",
+    "        break\n",
+    "    amount = float(input(\"Enter amount: \"))\n",
+    "    expenses.append((name, amount))\n",
+    "\n",
+    "with open(\"expenses.csv\", \"w\", newline=\"\") as f:\n",
+    "    writer = csv.writer(f)\n",
+    "    writer.writerow([\"Item\", \"Amount\"])\n",
+    "    writer.writerows(expenses)\n",
+    "\n",
+    "total = sum(a for _, a in expenses)\n",
+    "print(\"Total spent:\", total)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.11"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
