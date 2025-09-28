@@ -1,0 +1,119 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Lab 2: Functions & Scope\n",
+    "\n",
+    "In this lab, you'll practice writing modular functions, using default values, *args, **kwargs, and understanding scope.\n",
+    "\n",
+    "### Tasks\n",
+    "1. Write a function `add(a, b)` that returns the sum of two numbers.\n",
+    "2. Write a function `greet(name=\"Guest\")` that prints `\"Hello, <name>\"`.\n",
+    "3. Write a function that takes `*args` and returns the average of all numbers.\n",
+    "4. Write a function that takes `**kwargs` and prints each key-value pair.\n",
+    "\n",
+    "### Challenge\n",
+    "Create a **calculator** with functions for `add`, `subtract`, `multiply`, and `divide`. Let the user choose the operation and input numbers."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Task 1: add function\n",
+    "def add(a, b):\n",
+    "    return a + b\n",
+    "\n",
+    "print(add(2, 3))  # Expected: 5"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Task 2: greet function with default parameter\n",
+    "def greet(name=\"Guest\"):\n",
+    "    print(\"Hello,\", name)\n",
+    "\n",
+    "greet()\n",
+    "greet(\"Tyler\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Task 3: average with *args\n",
+    "def average(*args):\n",
+    "    return sum(args) / len(args)\n",
+    "\n",
+    "print(average(2, 4, 6))  # Expected: 4.0"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Task 4: printing **kwargs\n",
+    "def print_kwargs(**kwargs):\n",
+    "    for key, value in kwargs.items():\n",
+    "        print(key, \"=\", value)\n",
+    "\n",
+    "print_kwargs(name=\"Alex\", age=30)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Challenge: Calculator\n",
+    "def add(a, b): return a + b\n",
+    "def subtract(a, b): return a - b\n",
+    "def multiply(a, b): return a * b\n",
+    "def divide(a, b): return a / b\n",
+    "\n",
+    "print(\"Calculator\")\n",
+    "print(\"1. Add\\n2. Subtract\\n3. Multiply\\n4. Divide\")\n",
+    "choice = input(\"Enter choice (1-4): \")\n",
+    "x = float(input(\"Enter first number: \"))\n",
+    "y = float(input(\"Enter second number: \"))\n",
+    "\n",
+    "if choice == \"1\":\n",
+    "    print(add(x, y))\n",
+    "elif choice == \"2\":\n",
+    "    print(subtract(x, y))\n",
+    "elif choice == \"3\":\n",
+    "    print(multiply(x, y))\n",
+    "elif choice == \"4\":\n",
+    "    print(divide(x, y))\n",
+    "else:\n",
+    "    print(\"Invalid choice\")"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.11"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
